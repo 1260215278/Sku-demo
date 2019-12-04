@@ -5,7 +5,7 @@
             by -changsha
   -->
   <div class="about">
-    <h1>笛卡尔积Demo</h1>
+    <h1 @click="getMessage()">笛卡尔积Demo</h1>
     <el-button type="success" @click="processing()">一键生成</el-button>
     <el-button type="success" @click="setType()">添加商品规格</el-button>
     <div style="margin-top:20px;" v-for="(item,index) in shopType" :key="index">
@@ -97,15 +97,33 @@ export default {
       pos1: ""
     };
   },
+  components:{
+    'hello':{
+        render:function(createElement){
+         
+          return createElement(
+            'h'+this.level,
+            this.$se
+          )
+          
+        }
+    }
+  },
   created() {
     this.getList();
+    console.log(this)
+    this.$MyMessage()
   },
   methods: {
     descartes,
     //添加规格页
+    getMessage(){
+      this.$MyMessage()
+    },
     setType() {
       this.shopType.push();
     },
+     
     //返回所属规格名字
     retName(index) {
       if (index == 1) {
